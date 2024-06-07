@@ -1,0 +1,68 @@
+/* ActivityTable.css */
+
+.activity-table-container {
+  margin: 20px;
+  width: 90%; /* Increase width for better visibility */
+  height: 90%;
+}
+
+.activity-table-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  margin-top: 80px;
+  text-align: center;
+  text-decoration:crimson;
+  text-transform: uppercase;
+  color: crimson;
+  
+}
+
+.select-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Add space between the select elements */
+}
+
+.select-label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.select-dropdown {
+  padding: 8px 12px; /* Adjust padding for better appearance */
+  font-size: 16px;
+}
+
+.select-item {
+  display: flex;
+  align-items: center;
+}
+
+.activity-graph-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.activity-graph-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%; /* Ensure the graph container spans the full width */
+  height: 400px; /* Increase height for better visibility */
+}
+
+.activity-graph {
+  margin-top: 20px;
+}
+
+.activity-bar {
+  opacity: 0.8;
+}
+
+.activity-bar:hover {
+  opacity: 1;
+}

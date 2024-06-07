@@ -1,0 +1,44 @@
+.activity-chart-container {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%; /* Ensure the chart container spans the full width */
+  overflow: hidden; /* Not necessary for a chart container */
+}
+
+.activity-chart-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+  
+  .chart-wrapper {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .additional-info {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .additional-info p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .activity-chart-container {
+      margin: 10px;
+      padding: 10px;
+    }
+  }
+  

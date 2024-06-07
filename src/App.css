@@ -1,0 +1,133 @@
+/* App.css */
+
+/* Main App styles */
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  background-color: #333;
+  color: #fff;
+  width: 200px;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Allow vertical scrolling */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.sidebar:hover {
+  width: 220px; /* Slightly expand the sidebar on hover */
+}
+
+.sidebar h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.sidebar nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li a:focus {
+  background-color: #ff9800;
+  color: #333;
+  padding-left: 20px;
+}
+
+.sidebar nav ul li a.active {
+  background-color: #ff9800;
+  color: #333;
+  padding-left: 20px;
+}
+
+.sidebar nav ul li a span.icon {
+  display: inline-block;
+  margin-right: 10px;
+  transition: margin-right 0.3s ease;
+}
+
+.sidebar:hover nav ul li a span.icon {
+  margin-right: 15px;
+}
+.main-content {
+  margin-left: 220px;
+  padding: 20px;
+  width: calc(100% - 220px);
+  overflow-y: auto;
+}
+
+.dashboard-title {
+  text-align: center;
+  /* margin-bottom: 20px; */
+  font-size: 28px;
+}
+
+.component-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: start;
+}
+
+.dashboard {
+  scroll-snap-type: y mandatory;
+  height: 100%;
+}
+
+.header{
+  position: fixed;
+  top: 0;
+  text-align: center;
+  background-color: #f1f1f1; 
+  background: transparent;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.header h1{
+  margin-right: 200px;
+  text-shadow: #333;
+  text-transform: uppercase;
+  text-decoration-color: crimson;
+  
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .component-container {
+      width: 100%; /* Full width for small screens */
+    }
+  }}

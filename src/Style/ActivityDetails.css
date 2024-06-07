@@ -1,0 +1,65 @@
+/* ActivityDetails.css */
+
+.activity-details-container {
+  margin: 0px;
+  width: 90%; 
+  overflow: hidden;
+}
+
+.select-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+  
+.select-label {
+  margin-top: 5px;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: large;
+  
+}
+
+.select-dropdown {
+  padding: 8px 12px; 
+  font-size: 16px;
+  border-radius: 30px;
+}
+
+.activity-details-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: crimson;
+  margin-top: 90px;
+
+}
+
+.activity-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  justify-content: center;
+  margin-left: 25px;
+}
+
+.activity-details-table th,
+.activity-details-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.activity-details-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.activity-details-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.activity-details-table tbody tr:hover {
+  background-color: #ddd;
+}
