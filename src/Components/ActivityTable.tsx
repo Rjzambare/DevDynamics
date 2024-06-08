@@ -24,17 +24,17 @@ const ActivityTable: React.FC<ActivityTableProps> = ({ data }) => {
   }
 
   // Extract all unique dates for the dropdown
-  const allDates = Array.from(new Set(authorWorklog.rows.flatMap((row: RowsEntity) =>
+  const allDates = Array.from(new Set(authorWorklog.rows?.flatMap((row: RowsEntity) =>
     row.dayWiseActivity?.map((activity: DayWiseActivityEntity) => activity.date) || []
   )));
 
   // Extract all unique names for the dropdown
-  const allNames = Array.from(new Set(authorWorklog.rows.map((row: RowsEntity) => row.name)));
+  const allNames = Array.from(new Set(authorWorklog.rows?.map((row: RowsEntity) => row.name)));
 
   // Function to filter data by selected date and name
   const filterDataBySelectedDateAndName = () => {
     if (!selectedDate || !selectedName) {
-      return authorWorklog.rows.flatMap((row: RowsEntity) => {
+      return authorWorklog.rows?.flatMap((row: RowsEntity) => {
         return row.dayWiseActivity?.map((activity: DayWiseActivityEntity) => {
           const rowData: ChartData = { name: row.name, date: activity.date };
 
@@ -46,11 +46,11 @@ const ActivityTable: React.FC<ActivityTableProps> = ({ data }) => {
 
           return rowData;
         }) || [];
-      });
+      }) || [];
     }
 
     return authorWorklog.rows
-      .filter(row => row.name === selectedName)
+      ?.filter(row => row.name === selectedName)
       .flatMap((row: RowsEntity) => {
         return row.dayWiseActivity?.filter(activity => activity.date === selectedDate)
           .map((activity: DayWiseActivityEntity) => {
@@ -64,14 +64,14 @@ const ActivityTable: React.FC<ActivityTableProps> = ({ data }) => {
 
             return rowData;
           }) || [];
-      });
+      }) || [];
   };
 
   const chartData = filterDataBySelectedDateAndName();
 
   // Extract all unique activity names for the data keys
   const activityNames = Array.from(new Set(
-    authorWorklog.rows.flatMap((row: RowsEntity) =>
+    authorWorklog.rows?.flatMap((row: RowsEntity) =>
       row.dayWiseActivity?.flatMap((activity: DayWiseActivityEntity) =>
         activity.items?.children?.map((a) => a.label) || []
       ) || []
@@ -109,7 +109,7 @@ const ActivityTable: React.FC<ActivityTableProps> = ({ data }) => {
         <div>
           <label htmlFor="name-select" className="select-label">Select Name: </label>
           <select id="name-select" value={selectedName || ''} onChange={(e) => setSelectedName(e.target.value || null)} className="select-dropdown">
-          <option value="">-- Select an Author --</option>
+            <option value="">-- Select an Author --</option>
             {allNames.map(name => (
               <option key={name} value={name}>
                 {name}

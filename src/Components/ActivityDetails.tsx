@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Data, DayWiseActivityEntity, ActivityMetaEntity } from '../types';
+import { Data, DayWiseActivityEntity } from '../types';
 import '../Style/ActivityDetails.css'; // Import CSS file
 
 interface ActivityDetailsProps {
@@ -32,8 +32,8 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({ data }) => {
   const allNames = Array.from(new Set(authorWorklog.rows.map((row) => row.name)));
 
   // Function to generate initial table data with 0 values
-  const generateInitialTableData = () => {
-    const allDates = Array.from(new Set(authorWorklog.rows.flatMap((row) =>
+  const generateInitialTableData = (): DayWiseActivityEntity[] => {
+    const allDates = Array.from(new Set(authorWorklog.rows?.flatMap((row) =>
       row.dayWiseActivity?.map((activity) => activity.date) || []
     )));
 
@@ -41,23 +41,23 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({ data }) => {
       date,
       items: {
         children: [
-          { label: 'PR Open', count: '0' },
-          { label: 'PR Merged', count: '0' },
-          { label: 'Commits', count: '0' },
-          { label: 'PR Reviewed', count: '0' },
-          { label: 'PR Comments', count: '0' },
-          { label: 'Incident Alerts', count: '0' },
-          { label: 'Incidents Resolved', count: '0' }
+          { label: 'PR Open', count: '0', fillColor: '' },
+          { label: 'PR Merged', count: '0', fillColor: '' },
+          { label: 'Commits', count: '0', fillColor: '' },
+          { label: 'PR Reviewed', count: '0', fillColor: '' },
+          { label: 'PR Comments', count: '0', fillColor: '' },
+          { label: 'Incident Alerts', count: '0', fillColor: '' },
+          { label: 'Incidents Resolved', count: '0', fillColor: '' }
         ]
       }
     }));
   };
 
   // Function to filter data by selected name
-  const filterDataByName = (name: string) => {
+  const filterDataByName = (name: string): DayWiseActivityEntity[] => {
     const filteredData: DayWiseActivityEntity[] = [];
 
-    authorWorklog.rows.forEach((row) => {
+    authorWorklog.rows?.forEach((row) => {
       if (row.name === name && row.dayWiseActivity) {
         row.dayWiseActivity.forEach((activity) => {
           const existingActivity = filteredData.find((a) => a.date === activity.date);
@@ -83,7 +83,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({ data }) => {
       <div className="select-container">
         <label htmlFor="name-select" className="select-label">Select Name: </label>
         <select id="name-select" value={selectedName} onChange={(e) => setSelectedName(e.target.value)} className="select-dropdown">
-        <option value="">-- Select an Author --</option>
+          <option value="">-- Select an Author --</option>
           {allNames.map((name) => (
             <option key={name} value={name}>
               {name}
@@ -93,7 +93,6 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({ data }) => {
       </div>
 
       <div>
-        
         <table className="activity-details-table">
           <thead>
             <tr>

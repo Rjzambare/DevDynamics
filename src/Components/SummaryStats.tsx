@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Data, RowsEntity, DayWiseActivityEntity, ActivityMetaEntity } from '../types';
+import { Data, RowsEntity, DayWiseActivityEntity, ActivityMetaEntity, AuthorWorklog } from '../types';
 import '../Style/SummaryReport.css'; // Import CSS file
 
 interface SummaryReportProps {
@@ -7,7 +7,7 @@ interface SummaryReportProps {
 }
 
 const SummaryReport: React.FC<SummaryReportProps> = ({ data }) => {
-  const authorWorklog = data.AuthorWorklog;
+  const authorWorklog: AuthorWorklog | undefined = data.AuthorWorklog;
 
   if (!authorWorklog || !authorWorklog.rows || authorWorklog.rows.length === 0) {
     return <div>No data available</div>;
@@ -34,9 +34,9 @@ const SummaryReport: React.FC<SummaryReportProps> = ({ data }) => {
 
     const updatedActivityCounts: { [activity: string]: number } = { ...initialActivityCounts };
 
-    authorWorklog.rows.forEach((row: RowsEntity) => {
+    authorWorklog.rows?.forEach((row: RowsEntity) => {
       if (row.name === selectedAuthor) {
-        const dayWiseActivity: DayWiseActivityEntity[] | undefined = row.dayWiseActivity;
+        const dayWiseActivity: DayWiseActivityEntity[] | null | undefined = row.dayWiseActivity;
 
         if (dayWiseActivity) {
           dayWiseActivity.forEach((activity: DayWiseActivityEntity) => {

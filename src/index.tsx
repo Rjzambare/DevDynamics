@@ -1,6 +1,5 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './app';
+import App from './App';
 
 const domNode = document.getElementById('root');
 if (domNode) {
